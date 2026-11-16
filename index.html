@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="DSE有机化学" />
+  <title>Mastering Chemistry · Topic 7 &amp; Topic 8 有机化学全景精讲与闯关站</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="top-header">
+    <div class="brand-area">
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="打开单元目录">☰ 目录</button>
+      <div class="brand-logo">MC</div>
+      <div>
+        <div class="brand-title">Mastering Chemistry · 有机化学全通关</div>
+        <div class="brand-sub">Book 3A (Topic 7) &amp; Book 3B (Topic 8) · 中文通俗精讲 × 英文实战与题眼解码</div>
+      </div>
+    </div>
+
+    <nav class="nav-tabs" aria-label="学习模式导航">
+      <button class="nav-tab active" data-top-view="learn">📖 章节精讲与闯关</button>
+      <button class="nav-tab" data-top-view="map">🗺️ 全局官能团转化地图</button>
+      <button class="nav-tab" data-top-view="synthesis">🧭 合成路线寻路挑战</button>
+      <button class="nav-tab" data-top-view="decoder">🎯 英文长题“题眼解码”</button>
+      <button class="nav-tab" data-top-view="glossary">🔤 中英词典 &amp; 复习本</button>
+    </nav>
+
+    <div class="header-tools">
+      <button id="cue-toggle-btn" class="cue-global-toggle" title="在英文问题中自动标出关键考点词（题眼）并显示中文考点解析">
+        🔍 标出关键考点词：开启
+      </button>
+      <span id="global-progress-pill" class="progress-pill">加载中...</span>
+    </div>
+  </header>
+
+  <div id="app-shell" class="app-shell">
+    <aside id="app-sidebar" class="sidebar" aria-label="课本单元目录"></aside>
+    <main id="app-main" class="main-panel"></main>
+  </div>
+
+  <!-- 100% Offline Textbook Vector Diagrams & Curriculum Data Modules -->
+  <script defer src="js/svg_diagrams.js"></script>
+  <script defer src="js/data/u25_u26.js"></script>
+  <script defer src="js/data/u27_u28.js"></script>
+  <script defer src="js/data/bridge_and_map.js"></script>
+  <script defer src="js/data/u29_u30.js"></script>
+  <script defer src="js/data/u31.js"></script>
+  <script defer src="js/data/u32_u33.js"></script>
+  <script defer src="js/app.js"></script>
+</body>
+</html>
