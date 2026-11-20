@@ -8,6 +8,73 @@
   const STORAGE_KEY = 'hkdse_mastering_chem_t7_t8_v1';
   const UNIT_ORDER = ['u25', 'u26', 'u27', 'u28', 'bridge', 'u29', 'u30', 'u31', 'u32', 'u33'];
 
+  const AUDIO_COURSES = {
+    u25: {
+      num: 25, unitNum: 'Unit 25', book: 'Book 3A · Topic 7', topicId: 'topic7',
+      span: '25.1 – 25.8', epCount: 4, duration: '25:46', accent: '#c2410c',
+      titleZh: '化石燃料', titleEn: 'Fossil fuels',
+      highlights: '三大化石燃料成因 · 烃三大家族 · 工业分馏塔八大馏分 SVG · 六大性质递变因果链 · 催化转化器与脱硫洗涤器方程式'
+    },
+    u26: {
+      num: 26, unitNum: 'Unit 26', book: 'Book 3A · Topic 7', topicId: 'topic7',
+      span: '26.1 – 26.10', epCount: 4, duration: '24:00', accent: '#0d9488',
+      titleZh: '同系物、结构式及碳化合物的命名', titleEn: 'Homologous series, structural formulae & naming',
+      highlights: '碳四价成链能力 · 四大化学式与最外层电子图 SVG · 同系物四大黄金特征 · 拐弯最长主链排雷 · 支链沸点效应与油水密度'
+    },
+    u27: {
+      num: 27, unitNum: 'Unit 27', book: 'Book 3A · Topic 7', topicId: 'topic7',
+      span: '27.1 – 27.5', epCount: 4, duration: '28:54', accent: '#059669',
+      titleZh: '烷烃与烯烃', titleEn: 'Alkanes and alkenes',
+      highlights: 'UV light 自由基取代三步机理与点叉电子图 SVG · 石蜡油催化裂化先撤导管防倒吸 · Br₂(aq) 生 2-溴乙醇头号陷阱 · 鉴别禁区'
+    },
+    u28: {
+      num: 28, unitNum: 'Unit 28', book: 'Book 3A · Topic 7', topicId: 'topic7',
+      span: '28.1 – 28.7', epCount: 4, duration: '24:26', accent: '#7c3aed',
+      titleZh: '加成聚合物与塑料', titleEn: 'Addition polymers',
+      highlights: '热塑性塑料无交联滑移原理 · H 字法画重复单位（禁写 n！）· 七大经典加聚物 · LDPE vs HDPE 与 PVC 增塑剂 SVG · 四大废塑处理'
+    },
+    u29: {
+      num: 29, unitNum: 'Unit 29', book: 'Book 3B · Topic 8', topicId: 'topic8',
+      span: '29.1 – 29.11', epCount: 6, duration: '33:18', accent: '#4f46e5',
+      titleZh: '碳化合物的命名及物理性质', titleEn: 'Naming and physical properties of carbon compounds',
+      highlights: '多官能团优先序总榜 · 留 a / 留 e 拼写红线 · 1°/2°/3° 醇分级 SVG · 反写酯一刀切拆键法 · 氢键与羧酸二聚体沸点水溶性规律'
+    },
+    u30: {
+      num: 30, unitNum: 'Unit 30', book: 'Book 3B · Topic 8', topicId: 'topic8',
+      span: '30.1 – 30.7', epCount: 5, duration: '24:45', accent: '#0891b2',
+      titleZh: '同分异构现象', titleEn: 'Isomerism',
+      highlights: '结构与立体异构全景树 · 官能团异构穷举法 · 顺反异构双条件与熔沸点倒挂 · 手性碳绕环秒判 · 三维对映体与旋光仪 SVG'
+    },
+    u31: {
+      num: 31, unitNum: 'Unit 31', book: 'Book 3B · Topic 8', topicId: 'topic8',
+      span: '31.1 – 31.9', epCount: 6, duration: '23:21', accent: '#e11d48',
+      titleZh: '各官能团的典型反应', titleEn: 'Typical reactions of selected functional groups',
+      highlights: '马氏规则加成 · 卤代烷水解验卤三步曲 · PCl₅/SOCl₂ 与脱水 · 醇可控氧化（回流 vs 蒸馏 SVG）· NaBH₄/LiAlH₄ 还原 · 酯酰胺酸碱水解'
+    },
+    u32: {
+      num: 32, unitNum: 'Unit 32', book: 'Book 3B · Topic 8', topicId: 'topic8',
+      span: '32.1 – 32.4', epCount: 5, duration: '23:20', accent: '#0d9488',
+      titleZh: '碳化合物的合成', titleEn: 'Synthesis of carbon compounds',
+      highlights: '双向逆推思维与醇中央换乘总图 · 官能团移位模型 · 百分产率零失误计算 · 分液漏斗洗涤干燥蒸馏与重结晶四步提纯 SVG'
+    },
+    u33: {
+      num: 33, unitNum: 'Unit 33', book: 'Book 3B · Topic 8', topicId: 'topic8',
+      span: '33.1 – 33.10', epCount: 5, duration: '25:14', accent: '#c026d3',
+      titleZh: '重要的有机物质', titleEn: 'Important organic substances',
+      highlights: '阿司匹林结构与 1:2 返滴定 · 肥皂与无皂清洁剂两亲乳化机理 SVG · 皂化盐析与硬水浮渣 · 缩聚原理与 PET / PLA / Nylon-6,6 氢键'
+    }
+  };
+
+  function getAudioPreviewUrl(num) {
+    if (/\.github\.io$/i.test(window.location.hostname) || /^https?:/i.test(window.location.protocol)) {
+      return `https://kenlin666bot.github.io/unit${num}-audio-preview/`;
+    }
+    if (/\/mastering-organic-chem\//i.test(decodeURIComponent(window.location.pathname))) {
+      return `../Unit${num}_有声互动预习课/Unit${num}_有声互动预习课.html`;
+    }
+    return `./Unit${num}_有声互动预习课/Unit${num}_有声互动预习课.html`;
+  }
+
   const THEME_COLORS = {
     amber: '#d97706',
     teal: '#0d9488',
@@ -257,15 +324,22 @@
     const renderUnitBtn = (u) => {
       const st = getUnitMasteryStats(u);
       const active = u.id === state.currentUnitId ? 'active' : '';
+      const audioMeta = AUDIO_COURSES[u.id];
+      const audioLinkHtml = audioMeta
+        ? `<a class="unit-audio-mini" href="${getAudioPreviewUrl(audioMeta.num)}" data-audio-link="1" title="打开 ${escapeHtml(u.unitNum)} 双语有声互动预习课 (${audioMeta.duration})">🎧 有声</a>`
+        : '';
       return `
-        <button class="unit-nav-card ${active}" data-unit-nav="${u.id}">
+        <div class="unit-nav-card ${active}" role="button" tabindex="0" data-unit-nav="${u.id}">
           <div class="unit-nav-top">
             <span>${escapeHtml(u.unitNum)}</span>
-            <span>${st.pct}% (${st.done}/${st.total})</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;">
+              ${audioLinkHtml}
+              <span>${st.pct}% (${st.done}/${st.total})</span>
+            </span>
           </div>
           <div class="unit-nav-zh">${escapeHtml(u.titleZh)}</div>
           <div class="unit-nav-en">${escapeHtml(u.titleEn)}</div>
-        </button>
+        </div>
       `;
     };
 
@@ -582,6 +656,39 @@
       `
       : '';
 
+    const audioMeta = AUDIO_COURSES[unit.id];
+    const audioBannerHtml = audioMeta
+      ? `
+        <div class="audio-cta-banner">
+          <div class="audio-cta-info">
+            <div class="audio-cta-title">
+              <span>🎧 课前先听：${escapeHtml(unit.unitNum)} 双语有声互动预习课</span>
+              <span class="audio-dur-pill">${audioMeta.epCount} 讲微课 · 合集 ${audioMeta.duration}</span>
+            </div>
+            <div class="audio-cta-sub">
+              陈老师单人沉稳主讲（中文建立底层直觉 + 英文专有名词对标）+ 动态声画同步黑板，听完再刷下方三阶闯关题与英文长题效率翻倍！
+            </div>
+          </div>
+          <div class="audio-cta-actions">
+            <a class="audio-cta-btn" href="${getAudioPreviewUrl(audioMeta.num)}">🎧 打开 ${escapeHtml(unit.unitNum)} 有声预习课堂 →</a>
+            <button class="btn-sm" data-switch-view="audio">📚 全九章有声课目录</button>
+          </div>
+        </div>
+      `
+      : `
+        <div class="audio-cta-banner">
+          <div class="audio-cta-info">
+            <div class="audio-cta-title">🎧 两册有声互动预习课全线贯通（Unit 25 – Unit 33）</div>
+            <div class="audio-cta-sub">已配齐 Topic 7（U25–U28）与 Topic 8（U29–U33）全部 9 个单元共 43 讲声画同步预习微课！</div>
+          </div>
+          <div class="audio-cta-actions">
+            <a class="btn-sm" style="text-decoration:none;" href="${getAudioPreviewUrl(28)}">🎧 回顾 U28 有声课</a>
+            <a class="audio-cta-btn" href="${getAudioPreviewUrl(29)}">🎧 开启 Topic 8 · U29 有声课 →</a>
+            <button class="btn-sm" data-switch-view="audio">📚 全九章目录</button>
+          </div>
+        </div>
+      `;
+
     return `
       <div class="unit-hero" style="border-top-color:${accent};">
         <div class="unit-hero-badges">
@@ -591,6 +698,8 @@
         <h1>${escapeHtml(unit.titleZh)}</h1>
         <div class="unit-hero-en">${escapeHtml(unit.titleEn)}</div>
         <p class="unit-summary">${escapeHtml(unit.summary)}</p>
+
+        ${audioBannerHtml}
 
         <div class="terms-drawer">
           <div class="terms-drawer-title">🔤 本单元核心必背中英化学词汇（考试作答标准拼写）：</div>
@@ -740,6 +849,7 @@
           </div>
           <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
             <button class="btn-sm btn-primary-sm" data-jump-unit="${edge.unitId}">📖 前往 ${edge.unitId.toUpperCase()} 章节精讲</button>
+            ${AUDIO_COURSES[edge.unitId] ? `<a class="btn-sm" style="text-decoration:none;background:#eef2ff;color:#3730a3;border-color:#c7d2fe;" href="${getAudioPreviewUrl(AUDIO_COURSES[edge.unitId].num)}">🎧 听 ${edge.unitId.toUpperCase()} 有声预习</a>` : ''}
             <button class="btn-sm" data-map-reset="1">显示全图</button>
           </div>
         `;
@@ -776,7 +886,10 @@
           `).join('') : '<div style="font-size:12.5px;color:#64748b;">源头原料（石油原油分馏）</div>'}
         </div>
 
-        <button class="btn-sm btn-primary-sm" style="width:100%;margin-top:10px;" data-jump-unit="${n.unit}">📖 跳转到对应课本单元学习</button>
+        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
+          <button class="btn-sm btn-primary-sm" style="flex:1;" data-jump-unit="${n.unit}">📖 跳转到课本单元学习</button>
+          ${AUDIO_COURSES[n.unit] ? `<a class="btn-sm" style="text-decoration:none;background:#eef2ff;color:#3730a3;border-color:#c7d2fe;" href="${getAudioPreviewUrl(AUDIO_COURSES[n.unit].num)}">🎧 听有声课</a>` : ''}
+        </div>
       `;
     } else {
       inspectorHtml = `
@@ -1051,6 +1164,93 @@
   }
 
   /* ========================================================================
+     BILINGUAL AUDIO-INTERACTIVE PREVIEW HUB VIEW (U25 - U33)
+     ======================================================================== */
+  function renderAudioHubView() {
+    const t7Keys = ['u25', 'u26', 'u27', 'u28'];
+    const t8Keys = ['u29', 'u30', 'u31', 'u32', 'u33'];
+
+    const renderCard = (key) => {
+      const c = AUDIO_COURSES[key];
+      const url = getAudioPreviewUrl(c.num);
+      return `
+        <article class="audio-hub-card" style="border-top-color:${c.accent};">
+          <div>
+            <div class="audio-hub-meta">
+              <span style="color:${c.accent};">${escapeHtml(c.book)} · ${escapeHtml(c.unitNum)} (${escapeHtml(c.span)})</span>
+              <span class="audio-dur-pill">🎧 ${c.epCount} 讲 · ${c.duration}</span>
+            </div>
+            <h3 style="margin:8px 0 3px;font-size:18px;color:#0f172a;">${escapeHtml(c.titleZh)}</h3>
+            <div style="font-size:12.5px;color:#64748b;font-weight:600;margin-bottom:8px;">${escapeHtml(c.titleEn)}</div>
+            <p style="margin:0;font-size:13.2px;color:#334155;line-height:1.58;">${escapeHtml(c.highlights)}</p>
+          </div>
+          <div class="audio-hub-btns">
+            <a class="audio-cta-btn" style="padding:7px 14px;font-size:13px;" href="${url}">▶ 进入有声互动预习课</a>
+            <button class="btn-sm" data-jump-unit="${key}">📖 本章三阶闯关刷题</button>
+          </div>
+        </article>
+      `;
+    };
+
+    return `
+      <div class="unit-hero" style="border-top-color:#4f46e5;">
+        <div class="unit-hero-badges">
+          <span class="badge badge-book">Topic 7 + Topic 8 全系列有声课堂</span>
+          <span class="badge badge-unit">共 9 大单元 · 43 讲分节微课 · 总长 3 小时 53 分钟</span>
+        </div>
+        <h1>🎧 双语有声互动预习课总站（Unit 25 – Unit 33 全贯通）</h1>
+        <p class="unit-summary">
+          推荐高效学习闭环：<strong>第一步</strong>先点开对应单元的「有声互动预习课」，跟随陈老师双语推导与动态声画同步黑板建立底层直觉（支持 0.85x–1.5x 倍速与随身盲听）；<strong>第二步</strong>点击课堂右上角「本章闯关刷题」一键跳回本站对应单元，完成 Level 1–3 阶梯训练与 HKDSE 英文长题“题眼解码”！
+        </p>
+      </div>
+
+      <h2 class="audio-hub-section-title">📘 Book 3A · Topic 7：化石燃料与碳化合物基础（Unit 25 – Unit 28）</h2>
+      <div class="audio-hub-grid">
+        ${t7Keys.map(renderCard).join('')}
+      </div>
+
+      <h2 class="audio-hub-section-title">📗 Book 3B · Topic 8：碳化合物的化学（Unit 29 – Unit 33）</h2>
+      <div class="audio-hub-grid">
+        ${t8Keys.map(renderCard).join('')}
+      </div>
+    `;
+  }
+
+  /* ========================================================================
+     URL HASH / QUERY DEEP-LINK ROUTING (#u25..#u33, #audio, #map, etc.)
+     ======================================================================== */
+  function syncUrlHash() {
+    try {
+      const desired = state.view === 'learn' ? `#${state.currentUnitId}` : `#${state.view}`;
+      if (window.location.hash !== desired) {
+        history.replaceState(null, '', desired);
+      }
+    } catch (e) {}
+  }
+
+  function applyUrlRoute() {
+    try {
+      const params = new URLSearchParams(window.location.search || '');
+      const qUnit = (params.get('unit') || '').trim().toLowerCase();
+      const rawHash = decodeURIComponent((window.location.hash || '').replace(/^#/, '')).trim().toLowerCase();
+      const token = rawHash || qUnit;
+      if (!token) return false;
+
+      if (UNIT_ORDER.includes(token)) {
+        state.view = 'learn';
+        state.currentUnitId = token;
+        savePersisted();
+        return true;
+      }
+      if (['audio', 'map', 'synthesis', 'decoder', 'glossary', 'learn'].includes(token)) {
+        state.view = token;
+        return true;
+      }
+    } catch (e) {}
+    return false;
+  }
+
+  /* ========================================================================
      MAIN RENDER & DELEGATED EVENT LISTENERS
      ======================================================================== */
   function renderApp(keepScroll) {
@@ -1067,6 +1267,7 @@
 
     const prevScroll = window.scrollY;
     if (state.view === 'learn') main.innerHTML = renderLearnView();
+    else if (state.view === 'audio') main.innerHTML = renderAudioHubView();
     else if (state.view === 'map') main.innerHTML = renderMapView();
     else if (state.view === 'synthesis') main.innerHTML = renderSynthesisView();
     else if (state.view === 'decoder') main.innerHTML = renderDecoderView();
@@ -1143,6 +1344,11 @@
     document.addEventListener('click', (e) => {
       const target = e.target;
 
+      // Allow direct clicks on audio course links inside sidebar cards without hijacking
+      if (target.closest('[data-audio-link]')) {
+        return;
+      }
+
       // Mobile sidebar toggle
       if (target.closest('#mobile-menu-btn')) {
         const sb = document.getElementById('app-sidebar');
@@ -1164,6 +1370,7 @@
         state.view = topBtn.getAttribute('data-top-view');
         const sb = document.getElementById('app-sidebar');
         if (sb) sb.classList.remove('open');
+        syncUrlHash();
         renderApp(false);
         return;
       }
@@ -1171,6 +1378,7 @@
       const swBtn = target.closest('[data-switch-view]');
       if (swBtn) {
         state.view = swBtn.getAttribute('data-switch-view');
+        syncUrlHash();
         renderApp(false);
         return;
       }
@@ -1181,6 +1389,7 @@
         state.currentUnitId = unitBtn.getAttribute('data-unit-nav');
         state.view = 'learn';
         savePersisted();
+        syncUrlHash();
         const sb = document.getElementById('app-sidebar');
         if (sb) sb.classList.remove('open');
         renderApp(false);
@@ -1194,6 +1403,7 @@
         const secId = jumpBtn.getAttribute('data-jump-sec');
         state.view = 'learn';
         savePersisted();
+        syncUrlHash();
         renderApp(false);
         if (secId) {
           setTimeout(() => {
@@ -1355,7 +1565,13 @@
 
   function initApp() {
     loadPersisted();
+    applyUrlRoute();
     setupGlobalEvents();
+    window.addEventListener('hashchange', () => {
+      if (applyUrlRoute()) {
+        renderApp(false);
+      }
+    });
     renderApp(false);
   }
 
